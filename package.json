@@ -1,0 +1,79 @@
+{
+  "name": "apiconnect-wsdl",
+  "version": "1.8.31",
+  "main": "index.js",
+  "homepage": "https://developer.ibm.com/apiconnect",
+  "description": "API Connect WSDL",
+  "authors": [
+    "Rich Scheuerle <scheu@us.ibm.com>",
+    "Philip Taunton <philip_taunton@uk.ibm.com>"
+  ],
+  "repository": "https://github.ibm.com/velox/apiconnect-wsdl",
+  "dependencies": {
+    "iconv-lite": "^0.4.24",
+    "js-yaml": "^3.13.1",
+    "jszip": "^3.2.2",
+    "lodash": "^4.17.15",
+    "q": "^1.5.1",
+    "swagger-parser": "8.0.3",
+    "xml2js": "^0.4.22",
+    "xmldom": "^0.1.27",
+    "yauzl": "^2.10.0"
+  },
+  "devDependencies": {
+    "del": "^2.2.0",
+    "eslint": "^4.19.1",
+    "expect.js": "^0.3.1",
+    "glob": "^7.1.2",
+    "grunt": "^1.0.4",
+    "grunt-exec": "^2.0.0",
+    "gulp": "^4.0.0",
+    "gulp-clean": "^0.4.0",
+    "gulp-copy": "0.0.2",
+    "gulp-debug": "^2.1.2",
+    "gulp-jshint": "^2.0.0",
+    "gulp-mocha": "^6.0.0",
+    "gulp-notify": "^3.2.0",
+    "jshint": "^2.10.0",
+    "jshint-stylish": "^2.0.0",
+    "mocha": "^5.2.0",
+    "pre-commit": "^1.2.2",
+    "require-dir": "^0.3.0",
+    "rewire": "^2.5.2",
+    "oas-validator": "^4.0.3",
+    "swagger2openapi": "^6.0.3"
+  },
+  "engines": {
+    "node": ">=8"
+  },
+  "scripts": {
+    "test": "gulp test",
+    "prebuild": "npm install",
+    "prestart": "npm run build",
+    "predevelop": "npm run build",
+    "prepublish": "gulp build",
+    "prepare": "",
+    "build": "gulp build",
+    "lint": "eslint src tests cli",
+    "lint:fix": "npm run lint -- --fix",
+    "security": "",
+    "precommit": "cp $VELOX/apiconnect-wsdl/.build/pre-commit $VELOX/apiconnect-wsdl/.git/hooks && chmod 755 $VELOX/apiconnect-wsdl/.git/hooks/pre-commit",
+    "loc": "find $VELOX/apiconnect-wsdl/* -path $VELOX/apiconnect-wsdl/node_modules -prune -o -name '*.js' -exec sloc {} \\+",
+    "npm": "rm -rf $VELOX/apiconnect-wsdl/package-lock.json $VELOX/apiconnect-wsdl/node_modules && npm i",
+    "ghendi": "find $VELOX/apiconnect-wsdl -name \"resources-*.yaml\" -maxdepth 1 | xargs -I{} node $VELOX/ghendi/ghendi --no-sdk {}",
+    "kona": "find $VELOX/apiconnect-wsdl -name \"resources-*.yaml\" -maxdepth 1 | xargs -I{} sh -c 'API_NAME=$(echo $1 | cut -f2 -d\"-\" | cut -f1 -d\".\"); node $VELOX/kona/kona openapi/openapi-${API_NAME}.yaml' -- {}",
+    "upgrade": "node $VELOX/upgrade-base/utils/upgrade-tool gen-step 10 --repo-dir $VELOX/apiconnect-wsdl --cqlVersion 3.4.4"
+  },
+  "files": [
+    "src/",
+    "lib/",
+    "intl/",
+    "index.js",
+    "LICENSE.md",
+    "README.md"
+  ],
+  "pre-commit": [
+    "test"
+  ],
+  "license": "SEE LICENSE IN LICENSE.md"
+}
