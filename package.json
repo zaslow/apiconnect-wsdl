@@ -21,38 +21,27 @@
   },
   "devDependencies": {
     "del": "^2.2.0",
-    "eslint": "^4.19.1",
+    "eslint": "^8.25.0",
+    "eslint-config-google": "^0.14.0",
     "expect.js": "^0.3.1",
     "glob": "^7.1.2",
-    "grunt": "^1.0.4",
-    "grunt-exec": "^2.0.0",
-    "gulp": "^4.0.0",
-    "gulp-clean": "^0.4.0",
-    "gulp-copy": "0.0.2",
-    "gulp-debug": "^2.1.2",
-    "gulp-jshint": "^2.0.0",
-    "gulp-mocha": "^6.0.0",
-    "gulp-notify": "^3.2.0",
     "jshint": "^2.10.0",
     "jshint-stylish": "^2.0.0",
     "mocha": "^5.2.0",
+    "oas-validator": "^4.0.3",
     "pre-commit": "^1.2.2",
     "require-dir": "^0.3.0",
     "rewire": "^2.5.2",
-    "oas-validator": "^4.0.3",
     "swagger2openapi": "^6.0.3"
   },
   "engines": {
     "node": ">=8"
   },
   "scripts": {
-    "test": "gulp test",
     "prebuild": "npm install",
     "prestart": "npm run build",
     "predevelop": "npm run build",
-    "prepublish": "gulp build",
     "prepare": "",
-    "build": "gulp build",
     "lint": "eslint src tests cli",
     "lint:fix": "npm run lint -- --fix",
     "security": "",
@@ -70,9 +59,6 @@
     "index.js",
     "LICENSE.md",
     "README.md"
-  ],
-  "pre-commit": [
-    "test"
   ],
   "license": "SEE LICENSE IN LICENSE.md"
 }
